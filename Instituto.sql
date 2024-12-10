@@ -165,3 +165,60 @@ from alumno;
 SELECT fecha_nacimiento,
 	 truncate((datediff(now(),fecha_nacimiento)/365.25,0)
 from alumno;
+
+  public static int funcion1(String []libros, String[] autores, Boolean[] dispo, int tamanyo, int cantidadLibros){
+        Scanner sc = new Scanner(System.in);
+
+        if (cantidadLibros >= tamanyo){
+            System.out.println("Error ya no caben mas libros en la biblioteca");
+        }
+
+
+            System.out.println("\nDime el titulo del libro");
+
+            String titulo = sc.nextLine();
+
+            System.out.println("Ahora el nombre del autor");
+            String autor = sc.nextLine();
+
+            Boolean disponible;
+            System.out.println("Esta disponible?(Si/No)");
+            String respuesta = sc.nextLine();
+
+            if (respuesta.equals("Si")){
+                disponible = true;
+            } else if (respuesta.equals("No")) {
+                disponible = false;
+
+            } else {
+                System.out.println("Respuesta incorrecta, entendemos que no esta disponible");
+                disponible = false;
+            }
+
+
+            libros[cantidadLibros] = titulo;
+            autores[cantidadLibros] = autor;
+            dispo[cantidadLibros] = disponible;
+            cantidadLibros++;
+
+
+       return cantidadLibros;
+
+    }
+
+    public static void funcion2(String []libros, String[] autores, Boolean[] disp, int cantidadLibros){
+        System.out.println("Listado de libros");
+
+        for (int i = 0; i < cantidadLibros ; i++) {
+            String estado;
+            if (disp[i] = true){
+                estado = "Disponible";
+            } else {
+                estado = "Prestado";
+            }
+            System.out.println("El libro: " + libros[i] + " | Autor: " + autores[i] + " | Estado: " + estado );
+
+        }
+
+    }
+}
